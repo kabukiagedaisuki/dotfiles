@@ -53,6 +53,7 @@ alias ll='ls -l --color=auto'
 alias so='source'
 alias v='vim'
 alias vi='vim'
+alias view='vim -R'
 alias vz='vim ~/.zshrc'
 alias c='cdr'
 # historyに日付を表示
@@ -75,11 +76,11 @@ bindkey "^[[3~" delete-char
 # どこからでも参照できるディレクトリパス
 cdpath=(~)
 
-# 区切り文字の設定
-autoload -Uz select-word-style
-select-word-style default
-zstyle ':zle:*' word-chars "_-./;@"
-zstyle ':zle:*' word-style unspecified
+## 区切り文字の設定
+#autoload -Uz select-word-style
+#select-word-style default
+#zstyle ':zle:*' word-chars "_-./;@"
+#zstyle ':zle:*' word-style unspecified
 
 # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
 setopt no_flow_control
@@ -98,13 +99,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
 
-# コマンドを途中まで入力後、historyから絞り込み
-# 例 ls まで打ってCtrl+pでlsコマンドをさかのぼる、Ctrl+bで逆順
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^b" history-beginning-search-forward-end
+## コマンドを途中まで入力後、historyから絞り込み
+## 例 ls まで打ってCtrl+pでlsコマンドをさかのぼる、Ctrl+bで逆順
+#autoload -Uz history-search-end
+#zle -N history-beginning-search-backward-end history-search-end
+#zle -N history-beginning-search-forward-end history-search-end
+#bindkey "^p" history-beginning-search-backward-end
+#bindkey "^b" history-beginning-search-forward-end
 
 # cdrコマンドを有効 ログアウトしても有効なディレクトリ履歴
 # cdr タブでリストを表示
