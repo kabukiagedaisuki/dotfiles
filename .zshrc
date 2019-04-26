@@ -37,7 +37,6 @@ setopt pushd_ignore_dups
 # コマンドミスを修正
 setopt correct
 
-
 # グローバルエイリアス
 alias -g L='| less'
 alias -g H='| head'
@@ -46,6 +45,7 @@ alias -g GI='| grep -ri'
 
 
 # エイリアス
+alias ls='ls --color=auto'
 alias lst='ls -ltr --color=auto'
 alias l='ls -ltr --color=auto'
 alias la='ls -la --color=auto'

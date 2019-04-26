@@ -6,8 +6,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-for file in `ls -a | egrep -v "\\.$|README.md|setup.sh"`
+for file in `ls -a | egrep -v "\\.$|README.md|setup.sh|\.git"`
 do
-    echo $file
+    echo "re-symbolic link: $HOME/$file"
+    rm $HOME/$file
+    ln -s $HOME/Documents/dotfiles/$file $HOME/$file
 done
 
