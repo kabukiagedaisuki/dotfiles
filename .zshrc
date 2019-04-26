@@ -22,8 +22,8 @@ setopt share_history
 setopt histignorealldups
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000000
+SAVEHIST=100000000
 
 # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_cd
@@ -65,11 +65,12 @@ alias back='pushd'
 alias diff='diff -U1'
 
 # backspace,deleteキーを使えるように
+stty erase '^?'
 stty erase ^H
 bindkey "^[[3~" delete-char
 
 # cdの後にlsを実行
-chpwd() { ls -ltr --color=auto }
+#chpwd() { ls -ltr --color=auto }
 
 # どこからでも参照できるディレクトリパス
 cdpath=(~)
@@ -139,3 +140,5 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
+# Ctrl-wの挙動
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
