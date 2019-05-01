@@ -143,3 +143,9 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 # Ctrl-wの挙動
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# virtualenvwrapper
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  export WORKON_HOME=$HOME/.virtualens
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
