@@ -43,3 +43,12 @@ if [ `xrandr | grep -c "connected primary 1920x1080"` -ne 1 ]; then
 else
   echo "skip"
 fi
+
+# python3 default
+echo -n "python3 default ... "
+/usr/bin/python --version | grep 'Python 3' > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "skip"
+else
+  sudo ln -fs /usr/bin/python3 /usr/bin/python
+fi
