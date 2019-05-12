@@ -6,7 +6,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-for file in `ls -a | egrep -v "\\.$|README.md|setup.sh|\.git"`
+for file in `ls -a | egrep -v "\\.$|README.md|setup.sh|\.git|misc"`
 do
     echo "re-symbolic link: $HOME/$file"
     rm $HOME/$file

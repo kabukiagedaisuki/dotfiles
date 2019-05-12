@@ -56,6 +56,7 @@ alias vi='vim'
 alias view='vim -R'
 alias vz='vim ~/.zshrc'
 alias c='cdr'
+alias code-server='code-server --disable-telemetry'
 # historyに日付を表示
 alias h='fc -lt '%F %T' 1'
 alias cp='cp -i'
