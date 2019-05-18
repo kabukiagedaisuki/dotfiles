@@ -52,3 +52,15 @@ if [ $? -eq 0 ]; then
 else
   sudo ln -fs /usr/bin/python3 /usr/bin/python
 fi
+
+# VirtualBox GuestAddition
+echo -n "VirtualBox GuestAddition install ... "
+ls /opt/VBoxGuestAdditions*/src/vboxguest*/*.ko > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "skip"
+else
+  cd /opt/VBoxGuestAdditions*/src/vboxguest*/
+  sudo make
+  sudo make install
+  echo "need reboot !!"
+fi

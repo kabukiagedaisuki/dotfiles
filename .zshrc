@@ -150,3 +150,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   export WORKON_HOME=$HOME/.virtualens
   source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+# 全履歴一覧
+function history-all { history -E 1 }
+
