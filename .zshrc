@@ -9,6 +9,7 @@ autoload -Uz colors
 colors
 
 # 補完
+fpath=(~/.zsh/zsh-completions/src $fpath)
 autoload -Uz compinit
 compinit
 
@@ -153,4 +154,8 @@ fi
 
 # 全履歴一覧
 function history-all { history -E 1 }
+
+# plugin
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5,underline"
 
