@@ -35,7 +35,11 @@ set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " デフォルトでツリー表示
-autocmd VimEnter * execute 'NERDTree'
+function s:MoveToFileAtStart()
+  call feedkeys("\<c-w>")
+  call feedkeys("\l")
+endfunction
+autocmd VimEnter * execute 'NERDTree' | call s:MoveToFileAtStart()
 
 "dein Scripts-----------------------------
 if &compatible
