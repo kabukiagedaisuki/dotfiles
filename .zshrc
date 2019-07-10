@@ -26,6 +26,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
 
+# 重複を記録しない
+setopt hist_ignore_dups
+
 # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_cd
 
