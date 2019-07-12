@@ -35,19 +35,49 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-"tab-------------------------------------
-nnoremap [TABCMD]  <nop>
-nmap     <leader>t [TABCMD]
 
-nnoremap <silent> [TABCMD]f :<c-u>tabfirst<cr>
-nnoremap <silent> [TABCMD]l :<c-u>tablast<cr>
-nnoremap <silent> [TABCMD]n :<c-u>tabnext<cr>
-nnoremap <silent> [TABCMD]N :<c-u>tabNext<cr>
-nnoremap <silent> [TABCMD]p :<c-u>tabprevious<cr>
-nnoremap <silent> [TABCMD]e :<c-u>tabedit<cr>
-nnoremap <silent> [TABCMD]c :<c-u>tabclose<cr>
-nnoremap <silent> [TABCMD]o :<c-u>tabonly<cr>
-nnoremap <silent> [TABCMD]s :<c-u>tabs<cr>
+"tab-------------------------------------
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2 " 常にタブラインを表示
+
+" The prefix key.
+nnoremap [TABCMD]  <nop>
+nmap     t [TABCMD]
+map <silent> [TABCMD]n :tabnext<cr>
+map <silent> [TABCMD]N :tabNext<cr>
+map <silent> [TABCMD]p :tabprevious<cr>
+map <silent> [TABCMD]c :tablast <bar> tabnew<cr>
+map <silent> [TABCMD]x :tabclose<cr>
+
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+for n in range(1, 9)
+  execute 'nnoremap <silent> [TABCMD]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
 
 
 "NERDTree--------------------------------
@@ -67,6 +97,9 @@ set guifont=DroidSansMono\ 12
 
 "vim-airline-----------------------------
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '|'
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 " Powerline系フォントを利用する
 set laststatus=2
@@ -74,7 +107,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'base16'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -101,6 +134,9 @@ if dein#load_state('/home/shigeo/.vim/bundles')
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('w0rp/ale')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
 
