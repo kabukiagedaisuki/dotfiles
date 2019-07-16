@@ -7,7 +7,7 @@
 # python系
 #   virtualenv virtualenvwrapper
 #
-PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree"
+PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree exuberant-ctags"
 for pkg in $PKGS
 do
   case $pkg in

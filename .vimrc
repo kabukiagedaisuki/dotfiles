@@ -80,6 +80,13 @@ for n in range(1, 9)
 endfor
 
 
+"tag-------------------------------------
+set tags+=.tags;$HOME
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]> 
+
+
 "NERDTree--------------------------------
 map nd :NERDTreeToggle<CR>
 
@@ -138,6 +145,7 @@ if dein#load_state('/home/shigeo/.vim/bundles')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-repeat')
   call dein#add('w0rp/ale')
+  call dein#add('majutsushi/tagbar')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
 
