@@ -82,9 +82,10 @@ endfor
 
 "tag-------------------------------------
 set tags+=.tags;$HOME
-
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]> 
+" F8キーでtagbar起動
+nmap <F8> :TagbarToggle<CR>
 
 
 "NERDTree--------------------------------

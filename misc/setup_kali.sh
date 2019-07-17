@@ -7,7 +7,7 @@
 # python系
 #   virtualenv virtualenvwrapper
 #
-PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree exuberant-ctags"
+PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree exuberant-ctags fzf"
 for pkg in $PKGS
 do
   case $pkg in
@@ -64,3 +64,7 @@ else
   sudo make install
   echo "need reboot !!"
 fi
+
+# zplugin
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+
