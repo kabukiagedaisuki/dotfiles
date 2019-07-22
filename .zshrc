@@ -16,39 +16,27 @@ compinit
 # emacsキーバインド
 bindkey -e
 
-# 他のターミナルとヒストリーを共有
-setopt share_history
 
-# ヒストリーに重複を表示しない
-setopt histignorealldups
+setopt share_history     # 他のターミナルとヒストリーを共有
+setopt histignorealldups # ヒストリーに重複を表示しない
+setopt hist_ignore_dups  # 重複を記録しない
+setopt auto_cd           # cdコマンドを省略して、ディレクトリ名のみの入力で移動
+setopt auto_pushd        # 自動でpushdを実行
+setopt pushd_ignore_dups # pushdから重複を削除
+setopt correct           # コマンドミスを修正
+setopt prompt_subst
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Ctrl-wの挙動
 
-# 重複を記録しない
-setopt hist_ignore_dups
 
-# cdコマンドを省略して、ディレクトリ名のみの入力で移動
-setopt auto_cd
-
-# 自動でpushdを実行
-setopt auto_pushd
-
-# pushdから重複を削除
-setopt pushd_ignore_dups
-
-# コマンドミスを修正
-setopt correct
-
-# グローバルエイリアス
+# alias
 alias -g L='| less'
 alias -g H='| head'
 alias -g G='| grep'
 alias -g GI='| grep -ri'
-
-
-# エイリアス
 alias ls='ls --color=auto'
 alias lst='ls -ltr --color=auto'
 alias l='ls -ltr --color=auto'
@@ -61,7 +49,6 @@ alias view='vim -R'
 alias vz='vim ~/.zshrc'
 alias c='cdr'
 alias code-server='code-server --disable-telemetry'
-# historyに日付を表示
 alias h='fc -lt '%F %T' 1'
 alias cp='cp -i'
 alias rm='rm -i'
@@ -69,6 +56,17 @@ alias mkdir='mkdir -p'
 alias ..='c ../'
 alias back='pushd'
 alias diff='diff -U1'
+
+# function
+function history-all { history -E 1 } # 全履歴一覧
+function mkcd() {                     # mkdirとcdを同時実行
+  if [[ -d $1 ]]; then
+    echo "$1 already exists!"
+    cd $1
+  else
+    mkdir -p $1 && cd $1
+  fi
+}
 
 # backspace,deleteキーを使えるように
 stty erase '^?'
@@ -124,20 +122,10 @@ zstyle ":chpwd:*" recent-dirs-default true
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
-# mkdirとcdを同時実行
-function mkcd() {
-  if [[ -d $1 ]]; then
-    echo "$1 already exists!"
-    cd $1
-  else
-    mkdir -p $1 && cd $1
-  fi
-}
 
 # git設定
 RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
 autoload -Uz vcs_info
-setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
@@ -146,8 +134,6 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
-# Ctrl-wの挙動
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -155,8 +141,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-# 全履歴一覧
-function history-all { history -E 1 }
 
 ### Added by Zplugin's installer
 source '/home/shigeo/.zplugin/bin/zplugin.zsh'

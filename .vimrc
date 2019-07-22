@@ -116,7 +116,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'base16'
+let g:airline_theme = 'deus'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -147,6 +147,7 @@ if dein#load_state('/home/shigeo/.vim/bundles')
   call dein#add('tpope/vim-repeat')
   call dein#add('w0rp/ale')
   call dein#add('majutsushi/tagbar')
+  call dein#add('junegunn/fzf.vim')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
 
