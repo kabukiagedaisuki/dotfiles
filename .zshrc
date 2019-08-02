@@ -2,7 +2,7 @@
 export LANG=ja_JP.UTF-8
 
 # パスを追加したい場合
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
 
 # 色を使用
 autoload -Uz colors
@@ -134,6 +134,9 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
+
+# go
+export GOPATH=$HOME/go 
 
 # virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
