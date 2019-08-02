@@ -156,3 +156,5 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 zplugin light zdharma/fast-syntax-highlighting
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
