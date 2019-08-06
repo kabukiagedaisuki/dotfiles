@@ -149,6 +149,7 @@ if dein#load_state('/home/shigeo/.vim/bundles')
   call dein#add('majutsushi/tagbar')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('vim-jp/vimdoc-ja')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
 

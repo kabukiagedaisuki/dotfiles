@@ -1,8 +1,35 @@
 # 日本語を使用
 export LANG=ja_JP.UTF-8
-
 # パスを追加したい場合
-export PATH="$HOME/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
+export PATH="$HOME/bin:$HOME/.zplugin/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
+# go
+export GOPATH=$HOME/go 
+
+# alias
+alias -g F='| fzf'
+alias -g L='| less'
+alias -g H='| head'
+alias -g G='| grep'
+alias -g GI='| grep -ri'
+alias ..='c ../'
+alias back='pushd'
+alias c='cdr'
+alias code-server='code-server --disable-telemetry'
+alias cp='cp -i'
+alias diff='diff -U1'
+alias h='fc -lt '%F %T' 1'
+alias ls='ls --color=auto'
+alias lst='ls -ltr --color=auto'
+alias l='ls -ltr --color=auto'
+alias la='ls -la --color=auto'
+alias ll='ls -l --color=auto'
+alias mkdir='mkdir -p'
+alias rm='rm -i'
+alias so='source'
+alias v='vim'
+alias vi='vim'
+alias view='vim -R'
+alias vz='vim ~/.zshrc'
 
 # 色を使用
 autoload -Uz colors
@@ -13,6 +40,8 @@ fpath=(~/.zsh/zsh-completions/src $fpath)
 autoload -Uz compinit
 compinit
 
+
+
 # emacsキーバインド
 bindkey -e
 
@@ -20,6 +49,7 @@ bindkey -e
 setopt share_history     # 他のターミナルとヒストリーを共有
 setopt histignorealldups # ヒストリーに重複を表示しない
 setopt hist_ignore_dups  # 重複を記録しない
+
 setopt auto_cd           # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_pushd        # 自動でpushdを実行
 setopt pushd_ignore_dups # pushdから重複を削除
@@ -32,30 +62,6 @@ SAVEHIST=100000000
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Ctrl-wの挙動
 
 
-# alias
-alias -g L='| less'
-alias -g H='| head'
-alias -g G='| grep'
-alias -g GI='| grep -ri'
-alias ls='ls --color=auto'
-alias lst='ls -ltr --color=auto'
-alias l='ls -ltr --color=auto'
-alias la='ls -la --color=auto'
-alias ll='ls -l --color=auto'
-alias so='source'
-alias v='vim'
-alias vi='vim'
-alias view='vim -R'
-alias vz='vim ~/.zshrc'
-alias c='cdr'
-alias code-server='code-server --disable-telemetry'
-alias h='fc -lt '%F %T' 1'
-alias cp='cp -i'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ..='c ../'
-alias back='pushd'
-alias diff='diff -U1'
 
 # function
 function history-all { history -E 1 } # 全履歴一覧
@@ -135,8 +141,6 @@ precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 
-# go
-export GOPATH=$HOME/go 
 
 # virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -156,5 +160,5 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 zplugin light zdharma/fast-syntax-highlighting
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
