@@ -17,7 +17,7 @@ do
                sudo dpkg -i code.deb"
       ;;
     "virtualenv" | "virtualenvwrapper")
-      INSTALLED_CHECK="pip3 freeze | grep $pkg"
+      INSTALLED_CHECK="pip3 freeze | grep"
       INSTALL="sudo pip3 install"
       ;;
     * )

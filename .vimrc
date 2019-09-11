@@ -10,6 +10,9 @@ set cursorline
 " シンタックスハイライト
 syntax on
 
+" 256色
+set t_Co=256
+
 " 文字コードをUFT-8に設定
 set fenc=utf-8
 set encoding=UTF-8
