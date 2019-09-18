@@ -1,7 +1,7 @@
 # 日本語を使用
 export LANG=ja_JP.UTF-8
 # パスを追加したい場合
-export PATH="$HOME/bin:$HOME/.zplugin/bin:$PATH:$HOME/go/bin:/usr/local/go/bin"
+export PATH="$HOME/bin:$HOME/.zplugin/bin:$PATH:$HOME/go/bin:/usr/local/go/bin:$HOME/.cargo/bin"
 # go
 export GOPATH=$HOME/go 
 # terminal 256 color

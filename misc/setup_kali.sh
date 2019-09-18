@@ -65,6 +65,23 @@ else
   echo "need reboot !!"
 fi
 
+# Rust
+which cargo 2>&1 > /dev/null
+if [ $? -ne 0 ]; then
+  curl https://sh.rustup.rs -sSf | sh
+fi
+RPKGS="lsd ripgrep"
+for rpkg in $RPKGS
+do
+  echo -n "install $rpkg ... "
+  cargo install --list | grep ^$rpkg 2>&1 > /dev/null
+  if [ $? -ne 0 ]; then
+    echo ""
+    cargo install $rpkg
+  else
+    echo "skip"
+  fi
+done
+
 # zplugin
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-
