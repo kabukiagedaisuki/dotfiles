@@ -1,7 +1,7 @@
 # 日本語を使用
 export LANG=ja_JP.UTF-8
 # パスを追加したい場合
-export PATH="$HOME/bin:$HOME/.zplugin/bin:$PATH:$HOME/go/bin:/usr/local/go/bin:$HOME/.cargo/bin"
+export PATH="$HOME/bin:$HOME/.zinit/bin:$PATH:$HOME/go/bin:/usr/local/go/bin:$HOME/.cargo/bin"
 # go
 export GOPATH=$HOME/go 
 # terminal 256 color
@@ -97,7 +97,7 @@ cdpath=(~)
 setopt no_flow_control
 
 # プロンプトを2行で表示、時刻を表示
-PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%n${reset_color}@${fg[blue]}%m${reset_color}(%*%) %~
+PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%n${reset_color}@${fg[blue]}%m${reset_color} (%*%) ${fg[yellow]}%~${reset_color}
 %# "
 
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
@@ -132,6 +132,8 @@ alias zmv='noglob zmv -W'
 
 
 # git設定
+git config --global user.emal "hoge@example.com"
+git config --global user.name "Kabukiage Daisuki"
 RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -152,15 +154,24 @@ fi
 
 
 ### Added by Zplugin's installer
-source '/home/shigeo/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source '/home/shigeo/.zinit/bin/zinit.zsh'
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zplugin
 ### End of Zplugin's installer chunk
 
 # plugin
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zsh-users/zsh-completions
-zplugin light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zdharma/fast-syntax-highlighting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk
+### End of Zinit's installer chunk

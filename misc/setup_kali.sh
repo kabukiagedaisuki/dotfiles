@@ -7,7 +7,8 @@
 # python系
 #   virtualenv virtualenvwrapper
 #
-PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree exuberant-ctags fzf golang"
+#PKGS="task-japanese task-japanese-desktop code virtualenv virtualenvwrapper tree exuberant-ctags fzf golang"
+PKGS="task-japanese task-japanese-desktop virtualenv virtualenvwrapper tree exuberant-ctags fzf golang"
 for pkg in $PKGS
 do
   case $pkg in
@@ -38,8 +39,9 @@ done
 
 # display size:1920x1080
 echo -n "display size 1920x1080 ... "
-if [ `xrandr | grep -c "connected primary 1920x1080"` -ne 1 ]; then
-  xrandr --output VGA-1 --mode 1920x1080
+if [ `xrandr | grep -c "connected primary 1600x1200"` -ne 1 ]; then
+  display=`xrandr | grep "connected primary" | awk '{print $1}'`
+  xrandr --output $display --mode 1600x1200
 else
   echo "skip"
 fi
@@ -51,18 +53,6 @@ if [ $? -eq 0 ]; then
   echo "skip"
 else
   sudo ln -fs /usr/bin/python3 /usr/bin/python
-fi
-
-# VirtualBox GuestAddition
-echo -n "VirtualBox GuestAddition install ... "
-ls /opt/VBoxGuestAdditions*/src/vboxguest*/*.ko > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-  echo "skip"
-else
-  cd /opt/VBoxGuestAdditions*/src/vboxguest*/
-  sudo make
-  sudo make install
-  echo "need reboot !!"
 fi
 
 # Rust
@@ -83,5 +73,5 @@ do
   fi
 done
 
-# zplugin
+# zinit (old:zplugin)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"

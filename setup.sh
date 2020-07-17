@@ -1,8 +1,8 @@
 #!/bin/sh
 
-cd ~/Documents/dotfiles
+cd ~/dotfiles
 if [ $? -ne 0 ]; then
-    echo "Failed: cd ~/Documents/dotfiles"
+    echo "Failed: cd ~/dotfiles"
     exit 1
 fi
 
@@ -13,6 +13,8 @@ for file in `ls -a | egrep -v "\\.$|README.md|setup.sh|\.git|misc"`
 do
     echo "re-symbolic link: $HOME/$file"
     rm $HOME/$file
-    ln -s $HOME/Documents/dotfiles/$file $HOME/$file
+    ln -s $HOME/dotfiles/$file $HOME/$file
 done
+
+chsh -s /usr/bin/zsh
 
