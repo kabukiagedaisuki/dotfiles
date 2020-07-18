@@ -1,6 +1,5 @@
 #!/bin/sh
 
-if [ `ps axuww | grep -v grep | grep -c "ssh-add"` -eq 0 ]; then
-  eval `ssh-agent`
-  ssh-add
-fi
+echo "EXECUTE COMMAND:"
+echo "eval `ssh-agent -s`"
+echo "ssh-add /media/sf_share/id_rsa"

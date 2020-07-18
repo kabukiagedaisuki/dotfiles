@@ -33,3 +33,12 @@ else
   echo ""
   echo "desc: https://qiita.com/picato0511/items/61358822bcfbe671fff6"
 fi
+
+echo "CLIPBOARD host-guest share"
+echo ""
+echo "HOST OS todo"
+echo "- Setting->General->Advanced"
+echo "   + Share Clipboard: true"
+echo ""
+echo "desc: https://4sysops.com/archives/virtualbox-copy-and-paste-not-working/"
+
