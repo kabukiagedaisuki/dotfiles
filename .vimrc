@@ -40,6 +40,7 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 
 "tab-------------------------------------
+set tabstop=4
 
 " Anywhere SID.
 function! s:SID_PREFIX()
